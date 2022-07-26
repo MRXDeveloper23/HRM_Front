@@ -1,6 +1,11 @@
 <div class="container">
+  <nz-select class="lang-select" [(ngModel)]="lang" (ngModelChange)="changeLang($event)">
+    <nz-option nzValue="uz" nzLabel="UZ"></nz-option>
+    <nz-option nzValue="ru" nzLabel="RU"></nz-option>
+    <nz-option nzValue="en" nzLabel="EN"></nz-option>
+  </nz-select>
   <nz-card class="card">
-    <h1>Login</h1>
+    <h1>{{ "Login" | translate }}</h1>
     <form
       nz-form
       [formGroup]="loginForm"
@@ -8,44 +13,45 @@
       (ngSubmit)="submitForm()"
     >
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
+        <nz-form-control
+          [nzErrorTip]="'Please input your username!' | translate"
+        >
           <nz-input-group nzPrefixIcon="user">
             <input
               type="text"
               nz-input
               formControlName="username"
-              placeholder="Username"
+              [placeholder]="'Username' | translate"
             />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your password!">
+        <nz-form-control
+          [nzErrorTip]="'Please input your password!' | translate"
+        >
           <nz-input-group nzPrefixIcon="lock">
             <input
               type="password"
               nz-input
               formControlName="password"
-              placeholder="Password"
+              [placeholder]="'Password' | translate"
             />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <div nz-row>
-        <div nz-col [nzSpan]="12">
+        <div nz-col [nzSpan]="24">
           <label nz-checkbox formControlName="remember">
-            <span>Remember me</span>
+            <span>{{ "Remember me" | translate }}</span>
           </label>
-        </div>
-        <div nz-col [nzSpan]="12">
-          <a class="login-form-forgot">Forgot password</a>
         </div>
       </div>
       <button nz-button class="login-form-button" [nzType]="'primary'">
-        Log in
+        {{ "Log in" | translate }}
       </button>
-      or
-      <a (click)="navigateToRegister()">register now!</a>
+      {{ "or" | translate }}
+      <a (click)="navigateToRegister()">{{ "register now!" | translate }}</a>
     </form>
   </nz-card>
 </div>

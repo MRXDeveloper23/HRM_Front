@@ -30,3 +30,10 @@
   border-radius: 20px;
   margin: 1rem 0;
 }
+
+.lang-select {
+  position: absolute;
+  width: 60px;
+  top: 20px;
+  right: 20px;
+}

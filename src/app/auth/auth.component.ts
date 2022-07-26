@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth',
@@ -9,7 +10,15 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   loginForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  lang = 'ru';
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private translate: TranslateService
+  ) {
+    translate.setDefaultLang('ru');
+    translate.use('ru');
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -34,5 +43,8 @@ export class AuthComponent implements OnInit {
   }
   navigateToRegister() {
     this.router.navigate(['/signup']);
+  }
+  changeLang(lang: string) {
+    this.translate.use(lang);
   }
 }
